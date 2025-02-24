@@ -27,7 +27,9 @@ class ProfileUpdateRequest extends FormRequest
             ],
 
             'paypal_email' => [
-                'nullable', // nullable means it can be empty
+                Rule::requiredIf(function () {
+                    return $this -> user() -> referralCode() -> exists() && !is_null($this -> paypal_email);
+                }),
                 'string',
                 'lowercase',
                 'email',
