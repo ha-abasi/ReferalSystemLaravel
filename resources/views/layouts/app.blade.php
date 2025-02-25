@@ -29,6 +29,17 @@
 
             <!-- Page Content -->
             <main>
+                <!-- if there is a message or any errors, try to display it here -->
+                @if (session('message'))
+                    <div class="bg-green-500 text-white p-2 mb-4">
+                        {{ session('message') }}
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="bg-red-500 text-white p-2 mb-4">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 {{ $slot }}
             </main>
         </div>

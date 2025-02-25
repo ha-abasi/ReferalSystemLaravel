@@ -10,4 +10,8 @@ trait HasReferrals
     {
         return $this->hasOne(ReferralCode::class);
     }
+
+    public function getReferralUrl(){
+        return route("referral.index", ['referralCode' => $this->referralCode->code]);
+    }
 }
